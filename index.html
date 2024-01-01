@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <title>點餐系統</title>
   <style>
-    /* 這裡是 CSS，用來美化你的頁面 */
-    /* 這裡是 CSS，用來美化你的頁面 */
+    /* CSS 等待你的美化 */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -32,6 +31,14 @@
     .menu-item label {
       display: inline-block;
       width: 150px;
+    }
+
+    .contact-info {
+      margin-top: 20px;
+    }
+
+    .contact-info label {
+      display: block;
     }
 
     button {
@@ -61,34 +68,4 @@
       <input type="checkbox" id="item2" name="item2" value="菜品二">
     </div>
     <div class="menu-item">
-      <label for="item3">菜品三：</label>
-      <input type="checkbox" id="item3" name="item3" value="菜品三">
-    </div>
-    <button type="submit">提交訂單</button>
-  </form>
-</div>
-
-<script>
-  // 這裡是 JavaScript，用來處理表單提交
-  const form = document.getElementById('order-form');
-
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const selectedItems = [];
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-
-    checkboxes.forEach(function(checkbox) {
-      selectedItems.push(checkbox.value);
-    });
-
-    if (selectedItems.length > 0) {
-      alert('你的訂單：' + selectedItems.join(', '));
-    } else {
-      alert('請選擇至少一項菜品！');
-    }
-  });
-</script>
-
-</body>
-</html>
+     
