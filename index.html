@@ -277,21 +277,23 @@
 <script>
   const form = document.getElementById('order-form');
 
+// 在 form.addEventListener('submit', function(event) { ... }); 中添加以下這些 console.log 語句
+
 form.addEventListener('submit', function(event) {
   event.preventDefault();
 
-  const food = document.getElementById('food').value;
-  const bs = document.getElementById('bs').value;
-  const la = document.getElementById('la').value;
-  const AAA = document.getElementById('AAA').value;
-  const name = document.getElementById('name').value;
-  const phone = document.getElementById('phone').value;
-
-  const year = document.getElementById('year').value;
-  const month = document.getElementById('month').value;
-  const day = document.getElementById('day').value;
-  const time = document.getElementById('time').value;
-  const time2 = document.getElementById('time2').value;
+  // 將這些 console.log 語句添加在這裡
+  console.log('Food:', food);
+  console.log('Bs:', bs);
+  console.log('La:', la);
+  console.log('AAA:', AAA);
+  console.log('Name:', name);
+  console.log('Phone:', phone);
+  console.log('Year:', year);
+  console.log('Month:', month);
+  console.log('Day:', day);
+  console.log('Time:', time);
+  console.log('Time2:', time2);
 
   if (food !== '選擇餐點' && bs !== '份量' && la !== '辣度' && AAA !== '' && name !== '' && phone !== '') {
     let orderDetails = '你的訂單：' + food + '、' + bs + '、' + la + '\n餐點備註：' + AAA + '\n姓名：' + name + '\n聯絡電話：' + phone + '\n領餐時間：' + year + '/' + month + '/' + day + ' ' + time + ':' + time2;
@@ -304,8 +306,6 @@ form.addEventListener('submit', function(event) {
       },
       body: new URLSearchParams({
         food: food,
-        bs: bs, // 加入份量
-        la: la, // 加入辣度
         AAA: AAA,
         name: name,
         phone: phone,
@@ -330,6 +330,7 @@ form.addEventListener('submit', function(event) {
     alert('請填寫所有必填項目！');
   }
 });
+
 
 
 
