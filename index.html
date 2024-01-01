@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>點餐系統</title>
+  <style>
+    /* 這裡是 CSS，用來美化你的頁面 */
+    /* 這裡是 CSS，用來美化你的頁面 */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .menu-item {
+      margin-bottom: 15px;
+    }
+
+    .menu-item label {
+      display: inline-block;
+      width: 150px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>歡迎來到我們的餐廳！請點餐：</h1>
+  <form id="order-form">
+    <div class="menu-item">
+      <label for="item1">菜品一：</label>
+      <input type="checkbox" id="item1" name="item1" value="菜品一">
+    </div>
+    <div class="menu-item">
+      <label for="item2">菜品二：</label>
+      <input type="checkbox" id="item2" name="item2" value="菜品二">
+    </div>
+    <div class="menu-item">
+      <label for="item3">菜品三：</label>
+      <input type="checkbox" id="item3" name="item3" value="菜品三">
+    </div>
+    <button type="submit">提交訂單</button>
+  </form>
+</div>
+
+<script>
+  // 這裡是 JavaScript，用來處理表單提交
+  const form = document.getElementById('order-form');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const selectedItems = [];
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+
+    checkboxes.forEach(function(checkbox) {
+      selectedItems.push(checkbox.value);
+    });
+
+    if (selectedItems.length > 0) {
+      alert('你的訂單：' + selectedItems.join(', '));
+    } else {
+      alert('請選擇至少一項菜品！');
+    }
+  });
+</script>
+
+</body>
+</html>
