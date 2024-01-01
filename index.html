@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>VP愛在蔬食線上點餐系統</title>
+  <title>點餐系統</title>
   <style>
     /* CSS 等待你的美化 */
     body {
@@ -21,12 +21,6 @@
     }
 
     h1 {
-      text-align: center;
-    }
-    h2 {
-      text-align: center;
-    }
-    h3 {
       text-align: center;
     }
 
@@ -57,8 +51,10 @@
       margin-right: 10px;
     }
 
-    select {
+    select,
+    input[type="text"] {
       padding: 8px;
+      width: 200px; /* 調整寬度 */
     }
 
     button {
@@ -72,200 +68,73 @@
     button:hover {
       background-color: #0056b3;
     }
-          font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
-
-    .container {
-      width: 80%;
-      margin: 20px auto;
-      background-color: #fff;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: center; /* 讓容器內元素置中 */
-    }
-
-    .centered-image-container {
-      margin-bottom: 20px;
-    }
-
-    .centered-image {
-      display: block;
-      margin: 0 auto;
-    }
-
-    .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            background-color: #f8f9fa;
-        }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <div class="centered-image-container">
-    <img src="123.png" width="150" height="150" alt="愛在蔬食" class="centered-image">
-  </div>
-  <h1>歡迎使用 VP愛在蔬食 線上點餐系統！</h1>
-  <h3>（一次訂購一份餐點，多份請分不同單）</h3>
+  <h1>歡迎來到我們的餐廳！請點餐：</h1>
   <form id="order-form">
-
-    <div class="yummy-select">
-      <label for="eats">選擇餐點：</label>
-      <select id="food" name="food">
-        <!-- 餐點選項 -->
-        <option value="選擇餐點">選擇餐點</option>
-        <option value="素麵線">素麵線</option>
-        <option value="素油飯">素油飯</option>
-        <option value="臭豆腐素燥飯">臭豆腐素燥飯</option>
-        <option value="藥膳臭豆腐湯">藥膳臭豆腐湯</option>
-        <option value="藥膳臭豆腐湯麵">藥膳臭豆腐湯麵</option>
-        <option value="藥膳臭豆腐冬粉">藥膳臭豆腐冬粉</option>
-        <option value="素牛南臭豆腐湯">素牛南臭豆腐湯</option>
-        <option value="素牛南臭豆腐湯麵">素牛南臭豆腐湯麵</option>
-        <option value="素牛南臭豆腐冬粉">素牛南臭豆腐冬粉</option>
-        <option value="紅茶">紅茶</option>
-        <option value="冬瓜茶">冬瓜茶</option>
-        <option value="鳳梨酥">鳳梨酥</option>
-        <option value="綠豆糕">綠豆糕</option>
-      </select>   
-      <select id="bs" name="bs">
-        <!-- 份量選項 -->
-        <option value="份量">份量</option>
-        <option value="大份">大份</option>
+    <div class="menu-item">
+      <label for="meal">選擇餐點：</label>
+      <select id="meal" name="meal" required>
+        <option value="牛肉麵">牛肉麵</option>
+        <option value="炒麵">炒麵</option>
+        <option value="排骨飯">排骨飯</option>
+        <!-- 可以添加更多餐點選項 -->
+      </select>
+    </div>
+    <div class="menu-item">
+      <label for="quantity">份量：</label>
+      <select id="quantity" name="quantity" required>
         <option value="小份">小份</option>
-      </select> 
-      <select id="la" name="la">
-        <!-- 辣度選項 -->
-        <option value="辣度">辣度</option>
+        <option value="中份">中份</option>
+        <option value="大份">大份</option>
+        <!-- 可以添加更多份量選項 -->
+      </select>
+    </div>
+    <div class="menu-item">
+      <label for="spiciness">辣度：</label>
+      <select id="spiciness" name="spiciness" required>
         <option value="不辣">不辣</option>
         <option value="微辣">微辣</option>
-        <option value="小辣">小辣</option>
         <option value="中辣">中辣</option>
-        <option value="大辣">大辣</option>  
-      </select>     
+        <!-- 可以添加更多辣度選項 -->
+      </select>
+    </div>
+    <div class="menu-item">
+      <label for="note">餐點備註：</label>
+      <input type="text" id="note" name="note" required>
     </div>
     <div class="contact-info">
-      <label for="餐點備註">餐點備註：(請明確標示特製項目，如不加醬、不加香菜等)</label>
-      <input type="text" id="AAA" name="AAA">
+      <label for="name">姓名：</label>
+      <input type="text" id="name" name="name" required>
     </div>
     <div class="contact-info">
-      <label for="name">Line用戶名：</label>
-      <input type="text" id="name" name="name">
-    </div>
-    <div class="contact-info">
-      <label for="phone">聯絡電話：(取餐編號為手機後三碼)</label>
-      <input type="text" id="phone" name="phone">
+      <label for="phone">聯絡電話：</label>
+      <input type="text" id="phone" name="phone" required>
     </div>
 <br>
     <div class="time-select">
       <label for="date">領餐時間：</label>
-      <select id="year" name="year">
+      <select id="year" name="year" required>
         <!-- 年份選項 -->
-        <option value="西元年">西元年</option>
         <option value="2024">2024</option>
-        <option value="2025">2025</option>
-        <option value="2026">2026</option>
-        <option value="2027">2027</option>
-        <option value="2028">2028</option>
-        <option value="2029">2029</option>
-        <option value="2030">2030</option>
-        <option value="2031">2031</option>
         <!-- 可以添加更多年份選項 -->
       </select>
-      <select id="month" name="month">
+      <select id="month" name="month" required>
         <!-- 月份選項 -->
-        <option value="月">月</option>
         <option value="01">01</option>
-        <option value="02">02</option>
-        <option value="03">03</option>
-        <option value="04">04</option>
-        <option value="05">05</option>
-        <option value="06">06</option>
-        <option value="07">07</option>
-        <option value="08">08</option>
-        <option value="09">09</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
         <!-- 可以添加更多月份選項 -->
       </select>
-      <select id="day" name="day">
+      <select id="day" name="day" required>
         <!-- 日期選項 -->
-        <option value="日">日</option>
         <option value="01">01</option>
-        <option value="02">02</option>
-        <option value="03">03</option>
-        <option value="04">04</option>
-        <option value="05">05</option>
-        <option value="06">06</option>
-        <option value="07">07</option>
-        <option value="08">08</option>
-        <option value="09">09</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-        <option value="16">16</option>
-        <option value="17">17</option>
-        <option value="18">18</option>
-        <option value="19">19</option>
-        <option value="20">20</option>
-        <option value="21">21</option>
-        <option value="22">22</option>
-        <option value="23">23</option>
-        <option value="24">24</option>
-        <option value="25">25</option>
-        <option value="26">26</option>
-        <option value="27">27</option>
-        <option value="28">28</option>
-        <option value="29">29</option>
-        <option value="30">30</option>
-        <option value="31">31</option>
+        <!-- 可以添加更多日期選項 -->
       </select>
-      <select id="time" name="time">
+      <select id="time" name="time" required>
         <!-- 時間選項 -->
-        <option value="時">時</option>
-        <option value="00">00</option>
-        <option value="01">01</option>
-        <option value="02">02</option>
-        <option value="03">03</option>
-        <option value="04">04</option>
-        <option value="05">05</option>
-        <option value="06">06</option>
-        <option value="07">07</option>
-        <option value="08">08</option>
-        <option value="09">09</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-        <option value="16">16</option>
-        <option value="17">17</option>
-        <option value="18">18</option>
-        <option value="19">19</option>
-        <option value="20">20</option>
-        <option value="21">21</option>
-        <option value="22">22</option>
-        <option value="23">23</option>
-        <!-- 可以添加更多時間選項 -->
-      </select>
-      <select id="time2" name="time2">
-        <!-- 時間選項2 -->
-        <option value="分">分</option>
-        <option value="00">00</option>
-        <option value="15">15</option>
-        <option value="30">30</option>
-        <option value="45">45</option>
+        <option value="00:00">00:00</option>
         <!-- 可以添加更多時間選項 -->
       </select>
     </div>
@@ -277,87 +146,41 @@
 <script>
   const form = document.getElementById('order-form');
 
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
 
-  // 获取表单字段的值
-  const food = document.getElementById('food').value;
-  const bs = document.getElementById('bs').value;
-  const la = document.getElementById('la').value;
-  const AAA = document.getElementById('AAA').value;
-  const name = document.getElementById('name').value;
-  const phone = document.getElementById('phone').value;
-  const year = document.getElementById('year').value;
-  const month = document.getElementById('month').value;
-  const day = document.getElementById('day').value;
-  const time = document.getElementById('time').value;
-  const time2 = document.getElementById('time2').value;
+    const selectedMeal = document.getElementById('meal').value;
+    const selectedQuantity = document.getElementById('quantity').value;
+    const selectedSpiciness = document.getElementById('spiciness').value;
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const selectedNote = document.getElementById('note').value;
+    const year = document.getElementById('year').value;
+    const month = document.getElementById('month').value;
+    const day = document.getElementById('day').value;
+    const time = document.getElementById('time').value;
 
-  // 在控制台输出值，用于调试
-  console.log('Food:', food);
-  console.log('Bs:', bs);
-  console.log('La:', la);
-  console.log('AAA:', AAA);
-  console.log('Name:', name);
-  console.log('Phone:', phone);
-  console.log('Year:', year);
-  console.log('Month:', month);
-  console.log('Day:', day);
-  console.log('Time:', time);
-  console.log('Time2:', time2);
+    // Google Apps Script URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwUdvP9VMdYxRqQ9w0OJf8tphzXd5WhWJ25i-4LHsYY5Rq78fgFjaTMjxjAvk8iBajxNg/exec';
+    const formData = new FormData();
+    formData.append('meal', selectedMeal);
+    formData.append('quantity', selectedQuantity);
+    formData.append('spiciness', selectedSpiciness);
+    formData.append('name', name);
+    formData.append('phone', phone);
+    formData.append('year', year);
+    formData.append('month', month);
+    formData.append('day', day);
+    formData.append('time', time);
 
-  if (food !== '選擇餐點' && bs !== '份量' && la !== '辣度' && AAA !== '' && name !== '' && phone !== '') {
-    let orderDetails = '你的訂單：' + food + '、' + bs + '、' + la + '\n餐點備註：' + AAA + '\n姓名：' + name + '\n聯絡電話：' + phone + '\n領餐時間：' + year + '/' + month + '/' + day + ' ' + time + ':' + time2;
+    fetch(scriptURL, { method: 'POST', body: formData })
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message));
 
-    // 使用 fetch 發送數據到 Google Apps Script
-    fetch('https://script.google.com/macros/s/AKfycbyroaOGqu_UwY1BdQR5E-xkteM7jKPnyNDTG-CMo9QgZkdCXGYWei-X1UhZ8_DEiv7o/exec', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: new URLSearchParams({
-        food: food,
-        AAA: AAA,
-        name: name,
-        phone: phone,
-        year: year,
-        month: month,
-        day: day,
-        time: time,
-        time2: time2,
-      }),
-    })
-      .then(response => {
-        // 處理成功回應
-        alert('訂單已提交！');
-        form.reset(); // 清空表單
-      })
-      .catch(error => {
-        // 處理錯誤
-        console.error('提交訂單時出現錯誤：', error);
-        alert('訂單提交失敗，請稍後再試！');
-      });
-  } else {
-    alert('請填寫所有必填項目！');
-  }
-});
-
-
-
-
+    alert('訂單已提交！');
+    form.reset();
+  });
 </script>
 
-
-
-</script>
-
-    <div class="footer">
-        <body style="line-height: 1;">
-            <h2 style="text-align: center;">©2024 VP 愛在蔬食 版權所有</h2>
-            <h4 style="text-align: center;">• Designed by ChengYou Li from National United University (ROC) •</h4>
-            <h4 style="text-align: center;">電話：+886-908-669-740(Phone) 地址：國立聯合大學八甲校區 G2棟2F輕食區</h4>
-        </body>
-    </div>
 </body>
 </html>
-
