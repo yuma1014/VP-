@@ -280,15 +280,9 @@
 form.addEventListener('submit', function(event) {
   event.preventDefault();
 
-  const selectedItems = [];
-  const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-
-  checkboxes.forEach(function(checkbox) {
-    selectedItems.push(checkbox.value);
-  });
-
   const food = document.getElementById('food').value;
-  
+  const bs = document.getElementById('bs').value;
+  const la = document.getElementById('la').value;
   const AAA = document.getElementById('AAA').value;
   const name = document.getElementById('name').value;
   const phone = document.getElementById('phone').value;
@@ -299,14 +293,8 @@ form.addEventListener('submit', function(event) {
   const time = document.getElementById('time').value;
   const time2 = document.getElementById('time2').value;
 
-  if (selectedItems.length > 0) {
-    let orderDetails = '你的訂單：' + selectedItems.join(', ');
-    if 
-      orderDetails += '\n選擇餐點：' + food + '、' + bs + '、' + la;
-      (AAA !== '' && name !== '' && phone !== '') {
-      orderDetails += '\n餐點備註：' + AAA + '\n姓名：' + name + '\n聯絡電話：' + phone;
-    }
-    orderDetails += '\n領餐時間：' + year + '/' + month + '/' + day + ' ' + time + ':' + time2;
+  if (food !== '選擇餐點' && bs !== '份量' && la !== '辣度' && AAA !== '' && name !== '' && phone !== '') {
+    let orderDetails = '你的訂單：' + food + '、' + bs + '、' + la + '\n餐點備註：' + AAA + '\n姓名：' + name + '\n聯絡電話：' + phone + '\n領餐時間：' + year + '/' + month + '/' + day + ' ' + time + ':' + time2;
 
     // 使用 fetch 發送數據到 Google Apps Script
     fetch('https://script.google.com/macros/s/AKfycbyroaOGqu_UwY1BdQR5E-xkteM7jKPnyNDTG-CMo9QgZkdCXGYWei-X1UhZ8_DEiv7o/exec', {
@@ -337,9 +325,10 @@ form.addEventListener('submit', function(event) {
         alert('訂單提交失敗，請稍後再試！');
       });
   } else {
-    alert('請選擇至少一項菜品！');
+    alert('請填寫所有必填項目！');
   }
 });
+
 
 </script>
 
@@ -352,3 +341,4 @@ form.addEventListener('submit', function(event) {
     </div>
 </body>
 </html>
+
