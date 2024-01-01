@@ -115,7 +115,10 @@
       <label for="item3">菜品三：</label>
       <input type="checkbox" id="item3" name="item3" value="菜品三">
     </div>
-
+    <div class="contact-info">
+      <label for="餐點備註">：</label>
+      <input type="text" id="AAA" name="AAA">
+    </div>
     <div class="contact-info">
       <label for="name">姓名：</label>
       <input type="text" id="name" name="name">
@@ -249,6 +252,7 @@ form.addEventListener('submit', function(event) {
     selectedItems.push(checkbox.value);
   });
 
+  const AAA = document.getElementById('AAA').value;
   const name = document.getElementById('name').value;
   const phone = document.getElementById('phone').value;
 
@@ -261,7 +265,7 @@ form.addEventListener('submit', function(event) {
   if (selectedItems.length > 0) {
     let orderDetails = '你的訂單：' + selectedItems.join(', ');
     if (name !== '' && phone !== '') {
-      orderDetails += '\n姓名：' + name + '\n聯絡電話：' + phone;
+      orderDetails += '\n餐點備註：' + AAA + '\n姓名：' + name + '\n聯絡電話：' + phone;
     }
     orderDetails += '\n領餐時間：' + year + '/' + month + '/' + day + ' ' + time + ':' + time2;
 
@@ -275,6 +279,7 @@ form.addEventListener('submit', function(event) {
         item1: selectedItems[0] || '',
         item2: selectedItems[1] || '',
         item3: selectedItems[2] || '',
+        AAA: AAA,
         name: name,
         phone: phone,
         year: year,
