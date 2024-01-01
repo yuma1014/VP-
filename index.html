@@ -114,33 +114,48 @@
   <h1>歡迎使用 VP愛在蔬食 線上點餐系統！</h1>
   <h3>（一次訂購一份餐點，多份請分不同單）</h3>
   <form id="order-form">
-    <div class="menu-item">
-      <label for="item1">素麵線：</label>
-      <input type="checkbox" id="item1" name="item1" value="素麵線">
-      <h5> 大55 小45 </h5>
-    </div>
-    <div class="menu-item">
-      <label for="item2">素油飯：</label>
-      <input type="checkbox" id="item2" name="item2" value="素油飯">
-    </div>
-    <div class="menu-item">
-      <label for="item3">臭豆腐素燥飯：</label>
-      <input type="checkbox" id="item3" name="item3" value="臭豆腐素燥飯">
-    </div>
-    <div class="menu-item">
-      <label for="item4">香煎臭豆腐：</label>
-      <input type="checkbox" id="item4" name="item4" value="香煎臭豆腐">
-    </div>
-    <div class="menu-item">
-      <label for="item5">紅茶：</label>
-      <input type="checkbox" id="item5" name="item5" value="紅茶">
+
+    <div class="time-select">
+      <label for="food">選擇餐點：</label>
+      <select id="food" name="food">
+        <!-- 餐點選項 -->
+        <option value="選擇餐點">選擇餐點</option>
+        <option value="素麵線">素麵線</option>
+        <option value="素油飯">素油飯</option>
+        <option value="臭豆腐素燥飯">臭豆腐素燥飯</option>
+        <option value="藥膳臭豆腐湯">藥膳臭豆腐湯</option>
+        <option value="藥膳臭豆腐湯麵">藥膳臭豆腐湯麵</option>
+        <option value="藥膳臭豆腐冬粉">藥膳臭豆腐冬粉</option>
+        <option value="素牛南臭豆腐湯">素牛南臭豆腐湯</option>
+        <option value="素牛南臭豆腐湯麵">素牛南臭豆腐湯麵</option>
+        <option value="素牛南臭豆腐冬粉">素牛南臭豆腐冬粉</option>
+        <option value="紅茶">紅茶</option>
+        <option value="冬瓜茶">冬瓜茶</option>
+        <option value="鳳梨酥">鳳梨酥</option>
+        <option value="綠豆糕">綠豆糕</option>
+      </select>   
+      <select id="bs" name="bs">
+        <!-- 份量選項 -->
+        <option value="份量">份量</option>
+        <option value="大份">大份</option>
+        <option value="小份">小份</option>
+      </select> 
+      <select id="la" name="la">
+        <!-- 辣度選項 -->
+        <option value="辣度">辣度</option>
+        <option value="不辣">不辣</option>
+        <option value="微辣">微辣</option>
+        <option value="小辣">小辣</option>
+        <option value="中辣">中辣</option>
+        <option value="大辣">大辣</option>  
+      </select>     
     </div>
     <div class="contact-info">
-      <label for="餐點備註">餐點備註：(請明確標示特製項目，如小辣、不加香菜等)</label>
+      <label for="餐點備註">餐點備註：(請明確標示特製項目，如不加醬、不加香菜等)</label>
       <input type="text" id="AAA" name="AAA">
     </div>
     <div class="contact-info">
-      <label for="name">姓名：</label>
+      <label for="name">Line用戶名：</label>
       <input type="text" id="name" name="name">
     </div>
     <div class="contact-info">
@@ -272,6 +287,8 @@ form.addEventListener('submit', function(event) {
     selectedItems.push(checkbox.value);
   });
 
+  const food = document.getElementById('food').value;
+  
   const AAA = document.getElementById('AAA').value;
   const name = document.getElementById('name').value;
   const phone = document.getElementById('phone').value;
@@ -284,7 +301,9 @@ form.addEventListener('submit', function(event) {
 
   if (selectedItems.length > 0) {
     let orderDetails = '你的訂單：' + selectedItems.join(', ');
-    if (name !== '' && phone !== '') {
+    if 
+      orderDetails += '\n選擇餐點：' + food + '、' + bs + '、' + la;
+      (AAA !== '' && name !== '' && phone !== '') {
       orderDetails += '\n餐點備註：' + AAA + '\n姓名：' + name + '\n聯絡電話：' + phone;
     }
     orderDetails += '\n領餐時間：' + year + '/' + month + '/' + day + ' ' + time + ':' + time2;
@@ -296,12 +315,7 @@ form.addEventListener('submit', function(event) {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: new URLSearchParams({
-        item1: selectedItems[0] || '',
-        item2: selectedItems[1] || '',
-        item3: selectedItems[2] || '',
-        item4: selectedItems[3] || '',
-        item5: selectedItems[4] || '',
-        item6: selectedItems[5] || '',
+        food: food,
         AAA: AAA,
         name: name,
         phone: phone,
