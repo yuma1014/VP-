@@ -115,16 +115,24 @@
   <h3>（一次訂購一份餐點，多份請分不同單）</h3>
   <form id="order-form">
     <div class="menu-item">
-      <label for="item1">素麵線：</label>
-      <input type="checkbox" id="item1" name="item1" value="菜品一">
+      <label for="item1">素麵線 大55 小45：</label>
+      <input type="checkbox" id="item1" name="item1" value="素麵線">
     </div>
     <div class="menu-item">
       <label for="item2">素油飯：</label>
-      <input type="checkbox" id="item2" name="item2" value="菜品二">
+      <input type="checkbox" id="item2" name="item2" value="素油飯">
     </div>
     <div class="menu-item">
       <label for="item3">臭豆腐素燥飯：</label>
-      <input type="checkbox" id="item3" name="item3" value="菜品三">
+      <input type="checkbox" id="item3" name="item3" value="臭豆腐素燥飯">
+    </div>
+    <div class="menu-item">
+      <label for="item4">香煎臭豆腐：</label>
+      <input type="checkbox" id="item4" name="item4" value="香煎臭豆腐">
+    </div>
+    <div class="menu-item">
+      <label for="item5">紅茶：</label>
+      <input type="checkbox" id="item5" name="item5" value="紅茶">
     </div>
     <div class="contact-info">
       <label for="餐點備註">餐點備註：(請明確標示特製項目，如小辣、不加香菜等)</label>
@@ -290,6 +298,9 @@ form.addEventListener('submit', function(event) {
         item1: selectedItems[0] || '',
         item2: selectedItems[1] || '',
         item3: selectedItems[2] || '',
+        item4: selectedItems[3] || '',
+        item5: selectedItems[4] || '',
+        item6: selectedItems[5] || '',
         AAA: AAA,
         name: name,
         phone: phone,
