@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VP愛在蔬食線上點餐系統</title>
+  <style>
+    /* CSS 等待你的美化 */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    /* 其他 CSS 样式 */
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- 其他內容 -->
+    <form id="order-form">
+      <!-- 表單內容 -->
+    </form>
+  </div>
+
+  <div class="footer">
+    <h2>©2024 VP 愛在蔬食 版權所有</h2>
+    <h4>• Designed by ChengYou Li from National United University (ROC) •</h4>
+    <h4>電話：+886-908-669-740(Phone) 地址：國立聯合大學八甲校區 G2棟2F輕食區</h4>
+  </div>
+
+  <script>
+    const form = document.getElementById('order-form');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const selectedItems = [];
+      const food = document.getElementById('food').value;
+      const bs = document.getElementById('bs').value;
+      const la = document.getElementById('la').value;
+      const AAA = document.getElementById('AAA').value;
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const year = document.getElementById('year').value;
+      const month = document.getElementById('month').value;
+      const day = document.getElementById('day').value;
+      const time = document.getElementById('time').value;
+      const time2 = document.getElementById('time2').value;
+
+      if (food !== '選擇餐點' && bs !== '份量' && la !== '辣度' && AAA !== '' && name !== '' && phone !== '' && year !== '西元年' && month !== '月' && day !== '日' && time !== '時' && time2 !== '分') {
+        let orderDetails = '你的訂單：' + food + '、' + bs + '、' + la;
+        orderDetails += '\n餐點備註：' + AAA + '\n姓名：' + name + '\n聯絡電話：' + phone;
+        orderDetails += '\n領餐時間：' + year + '/' + month + '/' + day + ' ' + time + ':' + time2;
+
+        // 使用 fetch 發送數據到 Google Apps Script
+        fetch('https://script.google.com/macros/s/AKfycbyroaOGqu_UwY1BdQR5E-xkteM7jKPnyNDTG-CMo9QgZkdCXGYWei-X1UhZ8_DEiv7o/exec', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams({
+            food: food,
+            AAA: AAA,
+            name: name,
+            phone: phone,
+            year: year,
+            month: month,
+            day: day,
+            time: time,
+            time2: time2,
+          }),
+        })
+          .then(response => {
+            // 處理成功回應
+            alert('訂單已提交！');
+            form.reset(); // 清空表單
+          })
+          .catch(error => {
+            // 處理錯誤
+            console.error('提交訂單時出現錯誤：', error);
+            alert('訂單提交失敗，請稍後再試！');
+          });
+      } else {
+        alert('請填寫所有必填項目！');
+      }
+    });
+  </script>
+
+</body>
+
+</html>
