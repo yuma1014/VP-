@@ -66,13 +66,30 @@
     button:hover {
       background-color: #0056b3;
     }
+          font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center; /* 讓容器內元素置中 */
+    }
+
+    .centered-image-container {
+      margin-bottom: 20px;
+    }
+
     .centered-image {
-        display: block;
-        margin: 0 auto;
-        }
-      body {
-            text-align: center; /* 這會將圖片置中，只有當其父元素是<body>時才能生效 */
-        }
+      display: block;
+      margin: 0 auto;
+    }
+
     .footer {
             position: fixed;
             bottom: 0;
@@ -86,7 +103,10 @@
 
 <div class="container">
   <img src="123.png" width="150" height="150" alt="愛在蔬食" class="centered-image">
-  <h1>歡迎使用 VP愛在蔬食 線上點餐系統！請點餐：</h1>
+  <div class="container">
+  <div class="centered-image-container">
+    <img src="123.png" width="150" height="150" alt="愛在蔬食" class="centered-image">
+  </div>
   <form id="order-form">
     <div class="menu-item">
       <label for="item1">菜品一：</label>
