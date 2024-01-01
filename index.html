@@ -68,4 +68,50 @@
       <input type="checkbox" id="item2" name="item2" value="菜品二">
     </div>
     <div class="menu-item">
-     
+      <label for="item3">菜品三：</label>
+      <input type="checkbox" id="item3" name="item3" value="菜品三">
+    </div>
+
+    <div class="contact-info">
+      <label for="name">姓名：</label>
+      <input type="text" id="name" name="name">
+    </div>
+    <div class="contact-info">
+      <label for="phone">聯絡電話：</label>
+      <input type="text" id="phone" name="phone">
+    </div>
+
+    <button type="submit">提交訂單</button>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById('order-form');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const selectedItems = [];
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+
+    checkboxes.forEach(function(checkbox) {
+      selectedItems.push(checkbox.value);
+    });
+
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+
+    if (selectedItems.length > 0) {
+      let orderDetails = '你的訂單：' + selectedItems.join(', ');
+      if (name !== '' && phone !== '') {
+        orderDetails += '\n姓名：' + name + '\n聯絡電話：' + phone;
+      }
+      alert(orderDetails);
+    } else {
+      alert('請選擇至少一項菜品！');
+    }
+  });
+</script>
+
+</body>
+</html>
