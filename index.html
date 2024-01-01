@@ -41,6 +41,20 @@
       display: block;
     }
 
+    .time-select {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .time-select label {
+      margin-right: 10px;
+    }
+
+    select {
+      padding: 8px;
+    }
+
     button {
       padding: 10px 20px;
       background-color: #007bff;
@@ -81,6 +95,30 @@
       <input type="text" id="phone" name="phone">
     </div>
 
+    <div class="time-select">
+      <label for="date">領餐時間：</label>
+      <select id="year" name="year">
+        <!-- 年份選項 -->
+        <option value="2024">2024</option>
+        <!-- 可以添加更多年份選項 -->
+      </select>
+      <select id="month" name="month">
+        <!-- 月份選項 -->
+        <option value="01">01</option>
+        <!-- 可以添加更多月份選項 -->
+      </select>
+      <select id="day" name="day">
+        <!-- 日期選項 -->
+        <option value="01">01</option>
+        <!-- 可以添加更多日期選項 -->
+      </select>
+      <select id="time" name="time">
+        <!-- 時間選項 -->
+        <option value="00:00">00:00</option>
+        <!-- 可以添加更多時間選項 -->
+      </select>
+    </div>
+
     <button type="submit">提交訂單</button>
   </form>
 </div>
@@ -101,11 +139,17 @@
     const name = document.getElementById('name').value;
     const phone = document.getElementById('phone').value;
 
+    const year = document.getElementById('year').value;
+    const month = document.getElementById('month').value;
+    const day = document.getElementById('day').value;
+    const time = document.getElementById('time').value;
+
     if (selectedItems.length > 0) {
       let orderDetails = '你的訂單：' + selectedItems.join(', ');
       if (name !== '' && phone !== '') {
         orderDetails += '\n姓名：' + name + '\n聯絡電話：' + phone;
       }
+      orderDetails += '\n領餐時間：' + year + '/' + month + '/' + day + ' ' + time;
       alert(orderDetails);
     } else {
       alert('請選擇至少一項菜品！');
